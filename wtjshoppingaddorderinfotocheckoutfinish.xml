@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <extension type="plugin" method="upgrade" group="jshoppingorder">
-    <name>Jshoppingorde55r - WT JShopping Add order info to checkout finish</name>
+    <name>Jshoppingorde557r - WT JShopping Add order info to checkout finish</name>
     <author>Sergey Tolkachyov</author>
     <authorEmail>info@web-tolk.ru</authorEmail>
     <authorUrl>https://web-tolk.ru/</authorUrl>
