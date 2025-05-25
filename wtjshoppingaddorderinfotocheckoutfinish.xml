@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<extension type="plugin" method="upgrade" group="jshoppingorder">
+    <name>Jshoppingorder - WT JShopping Add order info to checkout finish</name>
+    <author>Sergey Tolkachyov</author>
+    <authorEmail>info@web-tolk.ru</authorEmail>
+    <authorUrl>https://web-tolk.ru/</authorUrl>
+	<creationDate>May 2025</creationDate>
+    <copyright>Sergey Tolkachyov</copyright>
+    <license>GNU GPL 3.0</license>
+    <version>1.0.0</version>
+    <description>PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_DESC</description>
+	<scriptfile>script.php</scriptfile>
+    <namespace path="src">Joomla\Plugin\Jshoppingorder\Wtjshoppingaddorderinfotocheckoutfinish</namespace>
+    <files>
+        <folder plugin="wtjshoppingaddorderinfotocheckoutfinish">src</folder>
+        <folder>services</folder>
+        <folder>language</folder>
+		  <folder>tmpl</folder>
+    </files>
+    <languages folder="language" client="administrator">
+        <language tag="en-GB">en-GB/plg_jshoppingorder_wtjshoppingaddorderinfotocheckoutfinish.ini</language>
+        <language tag="ru-RU">ru-RU/plg_jshoppingorder_wtjshoppingaddorderinfotocheckoutfinish.ini</language>
+        <language tag="en-GB">en-GB/plg_jshoppingorder_wtjshoppingaddorderinfotocheckoutfinish.sys.ini</language>
+        <language tag="ru-RU">ru-RU/plg_jshoppingorder_wtjshoppingaddorderinfotocheckoutfinish.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+						<field addfieldprefix="Joomla\Plugin\Jshoppingorder\Wtjshoppingaddorderinfotocheckoutfinish\Fields"
+                   type="plugininfo"
+                   name="plugininfo"/>
+
+						<field type="filelist"
+									name="tmpl"
+									label="PLG_CONTENT_WTVIEWPDF_FIELD_DEFAULT_TMPL_LABEL"
+									default="default"
+									directory="plugins\jshoppingorder\wtjshoppingaddorderinfotocheckoutfinish\tmpl"
+									hide_none="true"
+									hide_default="true"
+									stripext="true"
+									fileFilter="\.php$"
+						/>
+
+
+						<field addfieldprefix="Joomla\Plugin\Jshoppingorder\Wtjshoppingaddorderinfotocheckoutfinish\Fields"
+                   type="pluginshoworder"
+                   name="pluginshoworder"/>
+
+						<field name="show_order_number" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_NUMBER" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+
+						<field name="show_order_address" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_ADDRESS" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+
+						<field name="show_order_discount" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_DISCOUNT" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+
+						<field name="show_order_payment_method" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PAYMENT_METHOD" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+
+						<field name="show_order_payment_price" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PAYMENT_PRICE" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+
+						<field name="show_order_shipping_method" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_SHIPPING_METHOD" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+
+						<field name="show_order_shipping_price" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_SHIPPING_PRICE" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+
+						<field name="show_order_shipping_params_data" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_SHIPPING_PARAMS_DATA" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+
+						<field name="show_order_subtotal" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_SUBTOTAL" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+
+						<field name="show_tax" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_TAX" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+						
+						<field name="show_total" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PRICE_TOTAL" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+
+						<field name="show_products" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PRODUCTS" layout="joomla.form.field.radio.switcher" default="0">
+								<option value="0">JNO</option>
+								<option value="1">JYES</option>
+						</field>
+            </fieldset>
+        </fields>
+    </config>
+    <updateservers>
+        <server type="extension" priority="1" name="WT Jshopping SW JProjects updates">https://web-tolk.ru/component/swjprojects/jupdate?element=plg_wtjshoppingaddorderinfotocheckoutfinish</server>
+    </updateservers>
+    <changelogurl>https://web-tolk.ru/jchangelog?element=plg_wtjshoppingaddorderinfotocheckoutfinish</changelogurl>
+</extension>
