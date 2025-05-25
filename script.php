@@ -1,11 +1,11 @@
 <?php
 /**
- * @package     WT JoomShopping SW Projects
- * @version     2.1.1.1
+ * @package     WT JShopping Add order info to checkout finish
+ * @version     1.0.0
  * @Author      Sergey Tolkachyov, https://web-tolk.ru
  * @copyright   Copyright (C) 2020 Sergey Tolkachyov
  * @license     GNU/GPL 3.0
- * @link https://septdir.com, https://web-tolk.ru
+ * @link        https://web-tolk.ru
  * @since       1.0.0
  */
 
