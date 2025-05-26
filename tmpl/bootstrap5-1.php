@@ -25,7 +25,7 @@ extract($displayData);
  */
 $order->shipping_params_data = 'a:6:{s:16:"sm_wtcdek_pvz_id";s:4:"MGD1";s:18:"sm_wtcdek_pvz_city";s:60:"Магадан, городской округ Магадан";s:14:"sm_wtcdek_addr";s:27:"ул. Кольцевая, 3";s:14:"sm_wtcdek_type";s:23:"пункт выдачи";s:24:"sm_wtcdek_delivery_times";s:38:"Срок доставки 5-5 дней";s:19:"sm_wtcdek_work_time";s:44:"Пн-Пт 10:00-19:00, Сб-Вс 10:00-16:00";}'
 ?>
-    <p><?php print Text::_(string: 'JSHOP_THANK_YOU_ORDER') ?></p>
+    <p class="we"><?php print Text::_(string: 'JSHOP_THANK_YOU_ORDER') ?></p>
 
 <p class="order-info-header"><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_ORDER_DETAILS_LABEL') ?></p>
 
