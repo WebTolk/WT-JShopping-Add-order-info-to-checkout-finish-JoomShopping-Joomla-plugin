@@ -28,7 +28,6 @@ $order->shipping_params_data = 'a:6:{s:16:"sm_wtcdek_pvz_id";s:4:"MGD1";s:18:"sm
 
 
 
-<p class="we"><?php print Text::_(string: 'JSHOP_THANK_YOU_ORDER') ?></p>
 
 <p class="order-info-header"><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_ORDER_DETAILS_LABEL') ?></p>
 
