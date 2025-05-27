@@ -29,7 +29,7 @@ extract($displayData);
  */
 $order->shipping_params_data = 'a:6:{s:16:"sm_wtcdek_pvz_id";s:4:"MGD1";s:18:"sm_wtcdek_pvz_city";s:60:"Магадан, городской округ Магадан";s:14:"sm_wtcdek_addr";s:27:"ул. Кольцевая, 3";s:14:"sm_wtcdek_type";s:23:"пункт выдачи";s:24:"sm_wtcdek_delivery_times";s:38:"Срок доставки 5-5 дней";s:19:"sm_wtcdek_work_time";s:44:"Пн-Пт 10:00-19:00, Сб-Вс 10:00-16:00";}'
 ?>
-<div class="d-flex card border border-success bg-success-subtle mb-4">
+<div class="d-flex card border border-success mb-4">
     <div class="card-body text-center">
         <div class="icon-row">
             <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="100px" height="100px" viewBox="0 0 24 24"
@@ -44,9 +44,9 @@ $order->shipping_params_data = 'a:6:{s:16:"sm_wtcdek_pvz_id";s:4:"MGD1";s:18:"sm
             <h2><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_B5_THANK_TITLE') ?></h2>
             <p class="fs-3"><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_B5_THANK_TEXT') ?></p>
             <p class="fs-3 fw-bold">
-                <span class="order-info-label"><?php echo Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_B5_ORDER_NUMBER'); ?></span>:
+                <span class="order-info-label"><?php echo Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_NUMBER'); ?></span>:
                 <span
-                        class="order-info-value"><?php echo intval($order->order_number); ?></span></p>
+                        class="order-info-value"><?php echo $order->order_number; ?></span></p>
         </div>
     </div>
 </div>

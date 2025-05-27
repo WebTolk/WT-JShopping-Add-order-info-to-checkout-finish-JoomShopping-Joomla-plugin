@@ -22,27 +22,26 @@ use Joomla\Event\DispatcherInterface;
 use Joomla\Plugin\Jshoppingorder\Wtjshoppingaddorderinfotocheckoutfinish\Extension\Wtjshoppingaddorderinfotocheckoutfinish;
 
 return new class() implements ServiceProviderInterface {
-	/**
-	 * Registers the service provider with a DI container.
-	 *
-	 * @param   Container  $container  The DI container.
-	 *
-	 * @return  void
-	 *
-	 * @since   4.0.0
-	 */
-	public function register(Container $container)
-	{
-		$container->set(
-			PluginInterface::class,
-			function (Container $container) {
-				$subject = $container->get(DispatcherInterface::class);
-				$config  = (array) PluginHelper::getPlugin('jshoppingorder', 'wtjshoppingaddorderinfotocheckoutfinish');
-				$plugin = new Wtjshoppingaddorderinfotocheckoutfinish($subject, $config);
-				$plugin->setApplication(Factory::getApplication());
-				$plugin->setDatabase($container->get(DatabaseInterface::class));
-				return $plugin;
-			}
-		);
-	}
+    /**
+     * Registers the service provider with a DI container.
+     *
+     * @param Container $container The DI container.
+     *
+     * @return  void
+     *
+     * @since   4.0.0
+     */
+    public function register(Container $container)
+    {
+        $container->set(
+            PluginInterface::class,
+            function (Container $container) {
+                $subject = $container->get(DispatcherInterface::class);
+                $config = (array)PluginHelper::getPlugin('jshoppingorder', 'wtjshoppingaddorderinfotocheckoutfinish');
+                $plugin = new Wtjshoppingaddorderinfotocheckoutfinish($subject, $config);
+                $plugin->setApplication(Factory::getApplication());
+                return $plugin;
+            }
+        );
+    }
 };
