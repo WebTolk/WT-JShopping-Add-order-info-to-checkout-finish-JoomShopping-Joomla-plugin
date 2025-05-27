@@ -41,19 +41,19 @@ $order->shipping_params_data = 'a:6:{s:16:"sm_wtcdek_pvz_id";s:4:"MGD1";s:18:"sm
             </svg>
         </div>
         <div class="text-row">
-            <h2><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_B5_THANK_TITLE') ?></h2>
-            <p class="fs-3"><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_B5_THANK_TEXT') ?></p>
-            <p class="fs-3 fw-bold">
+            <h2 class="uk-heading-small"><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_TMPL_THANK_TITLE') ?></h2>
+            <p class="uk-text-large"><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_TMPL_THANK_TEXT') ?></p>
+            <p class="uk-text-large uk-text-bold">
                 <span class="order-info-label"><?php echo Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_NUMBER'); ?></span>:
                 <span
                         class="order-info-value"><?php echo $order->order_number; ?></span></p>
         </div>
     </div>
 </div>
-<ul uk-accordion class="">
+<ul uk-accordion>
     <li>
         <a class="uk-accordion-title uk-text-bold"
-           href><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_B5_ORDER_DETAILS_LABEL') ?></a>
+           href><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_TMPL_ORDER_DETAILS_LABEL') ?></a>
         <div class="uk-accordion-content">
             <?php if ($params->get('show_order_number', false) == true): ?>
                 <p><span class="order-info-label"><?php echo Text::_('JSHOP_ORDER_NUMBER'); ?></span>: <span
