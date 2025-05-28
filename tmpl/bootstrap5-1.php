@@ -16,8 +16,6 @@ use Joomla\CMS\HTML\HTMLHelper;
 defined('_JEXEC') or die;
 
 
-\Joomla\CMS\HTML\HTMLHelper::_('bootstrap.collapse', '.selector', []);
-
 /** @var array $displayData */
 
 extract($displayData);
