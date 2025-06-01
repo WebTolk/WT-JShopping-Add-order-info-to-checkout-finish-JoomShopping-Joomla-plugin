@@ -25,8 +25,8 @@ extract($displayData);
  * @var bool $first Is this first iteration or not?
  * @var Joomla\Registry\Registry|null $params The plugin params
  */
-$order->shipping_params_data = 'a:6:{s:16:"sm_wtcdek_pvz_id";s:4:"MGD1";s:18:"sm_wtcdek_pvz_city";s:60:"Магадан, городской округ Магадан";s:14:"sm_wtcdek_addr";s:27:"ул. Кольцевая, 3";s:14:"sm_wtcdek_type";s:23:"пункт выдачи";s:24:"sm_wtcdek_delivery_times";s:38:"Срок доставки 5-5 дней";s:19:"sm_wtcdek_work_time";s:44:"Пн-Пт 10:00-19:00, Сб-Вс 10:00-16:00";}'
 ?>
+
 <div class="uk-card uk-box-shadow-medium uk-margin-medium">
     <div class="uk-card-body uk-text-center">
         <div class="icon-row">
@@ -53,6 +53,10 @@ $order->shipping_params_data = 'a:6:{s:16:"sm_wtcdek_pvz_id";s:4:"MGD1";s:18:"sm
         <a class="uk-accordion-title uk-text-bold"
            href><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_TMPL_ORDER_DETAILS_LABEL') ?></a>
         <div class="uk-accordion-content">
+            <p><?php print Text::_(string: 'JSHOP_THANK_YOU_ORDER') ?></p>
+
+            <p class="order-info-header"><?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_ORDER_DETAILS_LABEL') ?></p>
+
             <?php if ($params->get('show_order_number', false) == true): ?>
                 <p><span class="order-info-label"><?php echo Text::_('JSHOP_ORDER_NUMBER'); ?></span>: <span
                             class="order-info-value"><?php echo $order->order_number; ?></span></p>
@@ -90,8 +94,7 @@ $order->shipping_params_data = 'a:6:{s:16:"sm_wtcdek_pvz_id";s:4:"MGD1";s:18:"sm
             <?php endif; ?>
 
             <?php if ($params->get('show_order_payment_method', false) == true): ?>
-                <p><span class="order-info-label"><?php echo Text::_('JSHOP_FINISH_PAYMENT_METHOD'); ?></span>:
-                    <span
+                <p><span class="order-info-label"><?php echo Text::_('JSHOP_FINISH_PAYMENT_METHOD'); ?></span>: <span
                             class="order-info-value"><?php echo $order->getPaymentName(); ?></span></p>
             <?php endif; ?>
 
@@ -106,29 +109,14 @@ $order->shipping_params_data = 'a:6:{s:16:"sm_wtcdek_pvz_id";s:4:"MGD1";s:18:"sm
             ?>
 
             <?php if ($params->get('show_order_shipping_method', false) == true): ?>
-                <p><span class="order-info-label"><?php echo Text::_('JSHOP_FINISH_SHIPPING_METHOD'); ?></span>:
-                    <span
+                <p><span class="order-info-label"><?php echo Text::_('JSHOP_FINISH_SHIPPING_METHOD'); ?></span>: <span
                             class="order-info-value"><?php echo $order->getShippingName(); ?></span></p>
             <?php endif; ?>
 
-            <?php
-            if (!empty((float)$order->order_shipping) && $params->get('show_order_shipping_price', false) == true) : ?>
+            <?php if ($params->get('show_order_shipping_price', false) == true) : ?>
                 <p><span class="order-info-label"><?php echo Text::_('JSHOP_SHIPPING_PRICE'); ?></span>: <span
                             class="order-info-value"><?php echo $order->order_shipping; ?></span></p>
             <?php endif; ?>
-
-            <?php
-            if (!empty($shipping_params_data = $order->getShippingParamsData()) && $params->get('show_order_shipping_params_data', false) == true) : ?>
-                <p>
-                    <span class="order-info-label"><?php echo Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_SHIPPING_PARAMS_DATA'); ?></span>
-                </p>
-                <?php
-                foreach ($shipping_params_data as $key => $value): ?>
-                    <p><span><?php echo $key; ?> </span> <span><?php echo $value; ?> </span></p>
-                <?php
-                endforeach;
-            endif;
-            ?>
 
             <?php if ($params->get('show_total', false) == true): ?>
                 <p><span class="order-info-label"><?php echo Text::_('JSHOP_PRICE_TOTAL'); ?></span>: <span
@@ -143,6 +131,24 @@ $order->shipping_params_data = 'a:6:{s:16:"sm_wtcdek_pvz_id";s:4:"MGD1";s:18:"sm
                                 class="order-info-value"><?php echo $item->product_name; ?></span></p>
                 <?php endforeach; ?>
             <?php endif; ?>
+
+            <?php
+            if ($params->get('show_order_shipping_params_data', false) == true) : ?>
+                <p>
+                    <span class="order-info-label"><strong><?php echo Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_SHIPPING_PARAMS_DATA'); ?></strong></span>
+                </p>
+                <table class="table table-hover">
+                    <?php
+                    $shipping_params_data = $order->getShippingParamsData();
+                    $shipping_params_names_tmpl = $order->wtjshoppingaddorderinfotocheckoutfinish_shipping_params_names;
+                    foreach ($shipping_params_names_tmpl as $key => $value) {
+                        echo '<tr><td>' . $shipping_params_names_tmpl[$key] . '</td><td>' . (!empty($shipping_params_data[$key]) ? $shipping_params_data[$key] : '') . '</td></tr>';
+                    }
+                    ?>
+                </table>
+            <?php
+            endif;
+            ?>
         </div>
     </li>
 </ul>
