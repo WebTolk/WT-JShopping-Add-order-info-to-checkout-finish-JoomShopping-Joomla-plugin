@@ -48,15 +48,17 @@ extract($displayData);
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionWTBootstrapTmpl">
     <div class="accordion-item">
         <h2 class="accordion-header">
             <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    data-bs-target="#collapseWTBootstrapTmpl" aria-expanded="false"
+                    aria-controls="collapseWTBootstrapTmpl">
                 <?php print Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_TMPL_ORDER_DETAILS_LABEL') ?>
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div id="collapseWTBootstrapTmpl" class="accordion-collapse collapse"
+             data-bs-parent="#accordionWTBootstrapTmpl">
             <div class="accordion-body">
                 <p><?php print Text::_(string: 'JSHOP_THANK_YOU_ORDER') ?></p>
 
