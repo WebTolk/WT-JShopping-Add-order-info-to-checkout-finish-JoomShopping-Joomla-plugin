@@ -2,12 +2,12 @@
 
 /**
  * @package     WT JShopping Add order info to checkout finish
- * @version     0.0.0.1
- * @Author      Sergey Tolkachyov, https://web-tolk.ru
- * @copyright   Copyright (C) 2025 Sergey Tolkachyov
- * @license     GNU/GPL 3.0
- * @link        https://web-tolk.ru
- * @since       1.0.0
+ * * @version     1.0.0
+ * * @Author      Sergey Tolkachyov and Sergey Sergevnin, https://web-tolk.ru
+ * * @copyright   Copyright (C) 2025 Sergey Tolkachyov and Sergey Sergevnin
+ * * @license     GNU/GPL 3.0
+ * * @link        https://web-tolk.ru
+ * * @since       1.0.0
  */
 
 defined('_JEXEC') || die;

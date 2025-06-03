@@ -2,12 +2,12 @@
 
 /**
  * @package     WT JShopping Add order info to checkout finish
- * @version     1.0.0
- * @Author      Sergey Tolkachyov, https://web-tolk.ru
- * @copyright   Copyright (C) 2025 Sergey Tolkachyov
- * @license     GNU/GPL 3.0
- * @link        https://web-tolk.ru
- * @since       1.0.0
+ * * @version     1.0.0
+ * * @Author      Sergey Tolkachyov and Sergey Sergevnin, https://web-tolk.ru
+ * * @copyright   Copyright (C) 2025 Sergey Tolkachyov and Sergey Sergevnin
+ * * @license     GNU/GPL 3.0
+ * * @link        https://web-tolk.ru
+ * * @since       1.0.0
  */
 
 namespace Joomla\Plugin\Jshoppingorder\Wtjshoppingaddorderinfotocheckoutfinish\Fields;
@@ -21,33 +21,33 @@ use Joomla\CMS\Factory;
 class PlugininfoField extends NoteField
 {
 
-	protected $type = 'Plugininfo';
+    protected $type = 'Plugininfo';
 
-	/**
-	 * Method to get the field input markup for a spacer.
-	 * The spacer does not have accept input.
-	 *
-	 * @return  string  The field input markup.
-	 *
-	 * @since   1.7.0
-	 */
-	protected function getInput()
-	{
+    /**
+     * Method to get the field input markup for a spacer.
+     * The spacer does not have accept input.
+     *
+     * @return  string  The field input markup.
+     *
+     * @since   1.7.0
+     */
+    protected function getInput()
+    {
 
-		$data    = $this->form->getData();
-		$element = $data->get('element');
-		$folder  = $data->get('folder');
-		$wa      = Factory::getApplication()->getDocument()->getWebAssetManager();
-		$wa->addInlineStyle("
+        $data = $this->form->getData();
+        $element = $data->get('element');
+        $folder = $data->get('folder');
+        $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+        $wa->addInlineStyle("
 			.plugin-info-img-svg:hover * {
 				cursor:pointer;
 			}
 		");
 
-		$wt_plugin_info = simplexml_load_file(JPATH_SITE . "/plugins/" . $folder . "/" . $element . "/" . $element . ".xml");
+        $wt_plugin_info = simplexml_load_file(JPATH_SITE . "/plugins/" . $folder . "/" . $element . "/" . $element . ".xml");
 
 
-		return $html = '<div class="d-flex shadow p-4 eee">
+        return $html = '<div class="d-flex shadow p-4 eee">
 			<div class="flex-shrink-0">
 				<a href="https://web-tolk.ru" target="_blank">
 					<svg class="plugin-info-img-svg" width="200" height="50" xmlns="http://www.w3.org/2000/svg">
@@ -70,28 +70,28 @@ class PlugininfoField extends NoteField
 				' . Text::_("PLG_" . strtoupper($element) . "_DESC") . '
 			</div>
 		</div>';
-	}
+    }
 
-	/**
-	 * @return  string  The field label markup.
-	 *
-	 * @since   1.7.0
-	 */
-	protected function getLabel()
-	{
+    /**
+     * @return  string  The field label markup.
+     *
+     * @since   1.7.0
+     */
+    protected function getLabel()
+    {
 
-		return '';
-	}
+        return '';
+    }
 
-	/**
-	 * Method to get the field title.
-	 *
-	 * @return  string  The field title.
-	 *
-	 * @since   1.7.0
-	 */
-	protected function getTitle()
-	{
-		return $this->getLabel();
-	}
+    /**
+     * Method to get the field title.
+     *
+     * @return  string  The field title.
+     *
+     * @since   1.7.0
+     */
+    protected function getTitle()
+    {
+        return $this->getLabel();
+    }
 }
