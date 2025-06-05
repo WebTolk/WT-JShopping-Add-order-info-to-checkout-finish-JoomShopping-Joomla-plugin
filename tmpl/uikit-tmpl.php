@@ -107,12 +107,12 @@ extract($displayData);
 
             if (!empty($order_details)) {
                 foreach ($order_details as $key => $value) {
-                    echo '<p><span class="order-info-label fw-bold">' . $key . '</span>: <span class="order-info-value">' . $value . '</span></p>';
+                    echo '<p><span class="order-info-label uk-text-bold">' . $key . '</span>: <span class="order-info-value">' . $value . '</span></p>';
                 }
                 if ($params->get('show_products', false) == true) { ?>
                     <div class="product-details-section mt-5 mb-5">
                         <?php foreach ($order->items as $item) {
-                            echo '<p class="mt-0 mb-0"><span class="order-info-label fw-bold">' . Text::_('JSHOP_NAME_PRODUCT') .
+                            echo '<p class="mt-0 mb-0"><span class="order-info-label uk-text-bold">' . Text::_('JSHOP_NAME_PRODUCT') .
                                 '</span>: <span class="order-info-value">' . $item->product_name . '</span></p>';
                         } ?>
                     </div>
@@ -142,7 +142,7 @@ extract($displayData);
                         <?php
                         echo '<p class="order-info-header fs-5">' . Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_ADDRESS') . '</p>';
                         foreach ($order_address as $key => $value) {
-                            echo '<p><span class="order-info-label fw-bold">' . $key . '</span>: <span class="order-info-value">' . $value . '</span></p>';
+                            echo '<p><span class="order-info-label uk-text-bold">' . $key . '</span>: <span class="order-info-value">' . $value . '</span></p>';
                         } ?>
                     </div>
                     <?php
@@ -157,7 +157,7 @@ extract($displayData);
                         $shipping_params_names_tmpl = $order->wtjshoppingaddorderinfotocheckoutfinish_shipping_params_names;
                         foreach ($shipping_params_names_tmpl as $key => $value) {
                             echo '<tr><td>' . (!empty ($shipping_params_data[$key]) ? $shipping_params_names_tmpl[$key] :
-                                    '') . '</td><td>' . (!empty ($shipping_params_data[$key]) ? $shipping_params_data[$key] : '') . '</td></tr>';
+                                    '') . '</td><td>' . $shipping_params_data[$key] . '</td></tr>';
                         }
                         ?>
                     </table>

@@ -164,7 +164,7 @@ extract($displayData);
                             $shipping_params_names_tmpl = $order->wtjshoppingaddorderinfotocheckoutfinish_shipping_params_names;
                             foreach ($shipping_params_names_tmpl as $key => $value) {
                                 echo '<tr><td>' . (!empty ($shipping_params_data[$key]) ? $shipping_params_names_tmpl[$key] :
-                                        '') . '</td><td>' . (!empty ($shipping_params_data[$key]) ? $shipping_params_data[$key] : '') . '</td></tr>';
+                                        '') . '</td><td>' . $shipping_params_data[$key] . '</td></tr>';
                             }
                             ?>
                         </table>
