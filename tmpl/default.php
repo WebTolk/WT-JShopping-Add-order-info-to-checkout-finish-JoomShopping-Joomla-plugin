@@ -34,55 +34,46 @@ extract($displayData);
 
 <?php
 $order_details = [];
-//Номер заказа
 if (!empty((float)$order->order_number)) {
     if ($params->get('show_order_number', false) == true) {
         $order_details[Text::_('JSHOP_ORDER_NUMBER')] = $order->order_number;
     }
 }
-//Скидка
 if (!empty((float)$order->order_discount)) {
     if ($params->get('show_order_discount', false) == true) {
         $order_details[Text::_('JSHOP_DISCOUNT')] = $order->order_discount;
     }
 }
-//НДС
 if (!empty($order->order_tax)) {
     if ($params->get('show_order_tax', false) == true) {
         $order_details[Text::_('JSHOP_TAX')] = $order->order_tax;
     }
 }
-//Итого
 if (!empty($order->order_subtotal)) {
     if ($params->get('show_order_subtotal', false) == true) {
         $order_details[Text::_('JSHOP_SUBTOTAL')] = $order->order_subtotal;
     }
 }
-//Метод платежа
 if (!empty($order->getPaymentName())) {
     if ($params->get('show_order_payment_method', false) == true) {
         $order_details[Text::_('JSHOP_FINISH_PAYMENT_METHOD')] = $order->getPaymentName();
     }
 }
-//Наценка за вид платежа
 if (!empty((float)$order->order_payment)) {
     if ($params->get('show_order_payment_price', false) == true) {
         $order_details[Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PAYMENT_PRICE')] = $order->order_payment;
     }
 }
-//Вид доставки
 if (!empty($order->getShippingName())) {
     if ($params->get('show_order_shipping_method', false) == true) {
         $order_details[Text::_('JSHOP_FINISH_SHIPPING_METHOD')] = $order->getShippingName();
     }
 }
-//Стоимость доставки
 if (!empty($order->order_shipping)) {
     if ($params->get('show_order_shipping_price', false) == true) {
         $order_details[Text::_('JSHOP_SHIPPING_PRICE')] = $order->order_shipping;
     }
 }
-//Полная стоимость заказа
 if (!empty($order->order_total)) {
     if ($params->get('show_total', false) == true) {
         $order_details[Text::_('JSHOP_PRICE_TOTAL')] = $order->order_total;
