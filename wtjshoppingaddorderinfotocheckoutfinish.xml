@@ -32,7 +32,7 @@
 
                 <field type="filelist"
                        name="tmpl"
-                       label="PLG_CONTENT_WTVIEWPDF_FIELD_DEFAULT_TMPL_LABEL"
+                       label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_TMPLLAYOUT_LABEL"
                        default="default"
                        directory="plugins\jshoppingorder\wtjshoppingaddorderinfotocheckoutfinish\tmpl"
                        hide_none="true"
