@@ -1,5 +1,4 @@
 <?php
-
 /**
  * * @package     WT JShopping Add order info to checkout finish
  * * @version     1.0.0
@@ -10,21 +9,17 @@
  * * @since       1.0.0
  */
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\HTML\HTMLHelper;
 
 defined('_JEXEC') or die;
 
-
 /** @var array $displayData */
-
 extract($displayData);
 
 /**
- * @var string $filePath Path to PDF file
- * @var bool $first Is this first iteration or not?
- * @var Joomla\Registry\Registry|null $params The plugin params
+ * @var string                        $filePath Path to PDF file
+ * @var bool                          $first    Is this first iteration or not?
+ * @var Joomla\Registry\Registry|null $params   The plugin params
  */
 ?>
 
@@ -40,12 +35,14 @@ extract($displayData);
             </svg>
         </div>
         <div class="text-row">
-            <h2><?php echo Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_TMPL_THANK_TITLE') ?></h2>
-            <p class="fs-3"><?php echo Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_TMPL_THANK_TEXT') ?></p>
+            <h2><?php
+                echo Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_TMPL_THANK_TITLE') ?></h2>
+            <p class="fs-3"><?php
+                echo Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_TMPL_THANK_TEXT') ?></p>
             <p class="fs-3 fw-bold">
-                <span class="order-info-label"><?php echo Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_NUMBER'); ?></span>:
-                <span
-                        class="order-info-value"><?php echo $order->order_number; ?></span></p>
+                <span class="order-info-label"><?php echo Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_NUMBER'); ?></span>: <span
+                        class="order-info-value"><?php echo $order->order_number; ?></span>
+            </p>
         </div>
     </div>
 </div>
@@ -55,7 +52,8 @@ extract($displayData);
             <button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseWTBootstrapTmpl" aria-expanded="false"
                     aria-controls="collapseWTBootstrapTmpl">
-                <?php echo Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_ORDER_DETAILS_LABEL') ?>
+                <?php
+                echo Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_ORDER_DETAILS_LABEL') ?>
             </button>
         </h2>
         <div id="collapseWTBootstrapTmpl" class="accordion-collapse collapse"
@@ -64,68 +62,58 @@ extract($displayData);
                 <?php
                 $order_details = [];
                 //Скидка
-                if (!empty((float)$order->order_discount)) {
-                    if ($params->get('show_order_discount', false) == true) {
+                if (!empty((float)$order->order_discount) && $params->get('show_order_discount', false) == true) {
                         $order_details[Text::_('JSHOP_DISCOUNT')] = $order->order_discount;
-                    }
                 }
                 //НДС
-                if (!empty($order->order_tax)) {
-                    if ($params->get('show_order_tax', false) == true) {
+                if (!empty($order->order_tax) && $params->get('show_order_tax', false) == true) {
                         $order_details[Text::_('JSHOP_TAX')] = $order->order_tax;
-                    }
                 }
                 //Итого
-                if (!empty($order->order_subtotal)) {
-                    if ($params->get('show_order_subtotal', false) == true) {
+                if (!empty($order->order_subtotal) && $params->get('show_order_subtotal', false) == true) {
                         $order_details[Text::_('JSHOP_SUBTOTAL')] = $order->order_subtotal;
-                    }
                 }
                 //Метод платежа
-                if (!empty($order->getPaymentName())) {
-                    if ($params->get('show_order_payment_method', false) == true) {
+                if (!empty($order->getPaymentName()) && $params->get('show_order_payment_method', false) == true) {
                         $order_details[Text::_('JSHOP_FINISH_PAYMENT_METHOD')] = $order->getPaymentName();
-                    }
                 }
                 //Наценка за вид платежа
-                if (!empty((float)$order->order_payment)) {
-                    if ($params->get('show_order_payment_price', false) == true) {
-                        $order_details[Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PAYMENT_PRICE')] = $order->order_payment;
-                    }
+                if (!empty((float)$order->order_payment) && $params->get('show_order_payment_price', false) == true) {
+                        $order_details[Text::_(
+                            'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PAYMENT_PRICE'
+                        )] = $order->order_payment;
                 }
                 //Вид доставки
-                if (!empty($order->getShippingName())) {
-                    if ($params->get('show_order_shipping_method', false) == true) {
+                if (!empty($order->getShippingName()) && $params->get('show_order_shipping_method', false) == true) {
                         $order_details[Text::_('JSHOP_FINISH_SHIPPING_METHOD')] = $order->getShippingName();
-                    }
                 }
                 //Стоимость доставки
-                if (!empty($order->order_shipping)) {
-                    if ($params->get('show_order_shipping_price', false) == true) {
+                if (!empty($order->order_shipping) && $params->get('show_order_shipping_price', false) == true) {
                         $order_details[Text::_('JSHOP_SHIPPING_PRICE')] = $order->order_shipping;
-                    }
                 }
                 //Полная стоимость заказа
-                if (!empty($order->order_total)) {
-                    if ($params->get('show_total', false) == true) {
+                if (!empty($order->order_total) && $params->get('show_total', false) == true) {
                         $order_details[Text::_('JSHOP_PRICE_TOTAL')] = $order->order_total;
-                    }
                 }
 
                 if (!empty($order_details)) {
                     foreach ($order_details as $key => $value) {
                         echo '<p><span class="order-info-label fw-bold">' . $key . '</span>: <span class="order-info-value">' . $value . '</span></p>';
                     }
-                    if ($params->get('show_products', false) == true) { ?>
-                        <div class="product-details-section mt-5 mb-5">
-                            <?php foreach ($order->items as $item) {
-                                echo '<p class="mt-0 mb-0"><span class="order-info-label fw-bold">' . Text::_('JSHOP_NAME_PRODUCT') .
-                                    '</span>: <span class="order-info-value">' . $item->product_name . '</span></p>';
-                            } ?>
-                        </div>
-                        <?php
-                    }
                 }
+                // Order items
+                if ($params->get('show_products', false) == true) : ?>
+                    <div class="product-details-section mt-5 mb-5">
+                        <ul class="list-group list-group-flush">
+                        <?php
+                        foreach ($order->items as $item) {
+                            echo '<li class="list-group-item">' . $item->product_name . '</li>';
+                        } ?>
+                        </ul>
+                    </div>
+                    <?php
+                endif;
+
                 $order_address = [];
 
                 if (!empty($order->d_state)) {
@@ -143,34 +131,35 @@ extract($displayData);
                 if (!empty($order->d_phone)) {
                     $order_address[Text::_('JSHOP_TELEFON')] = $order->d_phone;
                 }
-                if (!empty($order_address)) {
-                    if ($params->get('show_order_address', false) == true) { ?>
+                if (!empty($order_address) && $params->get('show_order_address', false) == true) :
+                    ?>
                         <div class="address-details-section mt-5 mb-5">
                             <?php
-                            echo '<p class="order-info-header fs-5">' . Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_ADDRESS') . '</p>';
+                            echo '<p class="order-info-header fs-5">' . Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_ADDRESS') . '</p>';
                             foreach ($order_address as $key => $value) {
                                 echo '<p><span class="order-info-label fw-bold">' . $key . '</span>: <span class="order-info-value">' . $value . '</span></p>';
                             } ?>
                         </div>
                         <?php
-                    }
-                }
-                if (!empty($order->getShippingParamsData())) {
-                    if ($params->get('show_order_shipping_params_data', false) == true) {
-                        echo '<p class="order-info-header fs-5">' . Text::_(string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_SHIPPING_PARAMS_DATA') . '</p>'; ?>
+                endif;
+
+                if (!empty($shipping_params_data = $order->getShippingParamsData()) && $params->get('show_order_shipping_params_data', false) == true) :
+
+                        echo '<p class="order-info-header fs-5">' . Text::_(
+                                string: 'PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_SHIPPING_PARAMS_DATA'
+                            ) . '</p>'; ?>
                         <table class="table table-hover">
                             <?php
-                            $shipping_params_data = $order->getShippingParamsData();
                             $shipping_params_names_tmpl = $order->wtjshoppingaddorderinfotocheckoutfinish_shipping_params_names;
                             foreach ($shipping_params_names_tmpl as $key => $value) {
-                                echo '<tr><td>' . (!empty ($shipping_params_data[$key]) ? $shipping_params_names_tmpl[$key] :
-                                        '') . '</td><td>' . $shipping_params_data[$key] . '</td></tr>';
+                                if(!empty ($shipping_params_data[$key])) {
+                                    echo '<tr><td>'. $shipping_params_names_tmpl[$key] . '</td><td>' . $shipping_params_data[$key] . '</td></tr>';
+                                }
                             }
                             ?>
                         </table>
                         <?php
-                    }
-                }
+                endif;
                 ?>
             </div>
         </div>

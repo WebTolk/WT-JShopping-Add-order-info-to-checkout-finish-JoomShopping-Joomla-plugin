@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     WT JShopping Add order info to checkout finish
  * * @version     1.0.0
@@ -12,12 +11,11 @@
 
 namespace Joomla\Plugin\Jshoppingorder\Wtjshoppingaddorderinfotocheckoutfinish\Fields;
 
-defined('_JEXEC') or die;
-
 use Joomla\CMS\Form\Field\NoteField;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Factory;
-
+use function defined;
+defined('_JEXEC') or die;
 class PlugininfoField extends NoteField
 {
 
@@ -33,7 +31,6 @@ class PlugininfoField extends NoteField
      */
     protected function getInput()
     {
-
         $data = $this->form->getData();
         $element = $data->get('element');
         $folder = $data->get('folder');
