@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package     WT JShopping Add order info to checkout finish
  * * @version     1.0.0
@@ -10,7 +9,7 @@
  * * @since       1.0.0
  */
 
-defined('_JEXEC') || die;
+defined('_JEXEC') or die;
 
 use Joomla\CMS\Extension\PluginInterface;
 use Joomla\CMS\Factory;

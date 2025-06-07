@@ -41,88 +41,115 @@
                        fileFilter="\.php$"
                 />
 
-                <field type="note" name="PluginInfo" class="mb-4 fw-semibold"
-                       description="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_PLUGININFO"></field>
+                <field type="select_order_info"
+                       name="PluginInfo"
+                       class="mb-4 fw-semibold"
+                       description="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SELECT_ORDER_INFO_HEADER"/>
 
-                <field name="show_order_number" type="radio"
+                <field name="show_order_number"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_NUMBER"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_order_address" type="radio"
+                <field name="show_order_address"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_ADDRESS"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_order_discount" type="radio"
+                <field name="show_order_discount"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_DISCOUNT"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_order_payment_method" type="radio"
+                <field name="show_order_payment_method"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PAYMENT_METHOD"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_order_payment_price" type="radio"
+                <field name="show_order_payment_price"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PAYMENT_PRICE"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_order_shipping_method" type="radio"
+                <field name="show_order_shipping_method"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_SHIPPING_METHOD"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_order_shipping_price" type="radio"
+                <field name="show_order_shipping_price"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_SHIPPING_PRICE"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_order_subtotal" type="radio"
+                <field name="show_order_subtotal"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_ORDER_SUBTOTAL"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_tax" type="radio" label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_TAX"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                <field name="show_tax"
+                       type="radio"
+                       label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_TAX"
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_total" type="radio"
+                <field name="show_total"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PRICE_TOTAL"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_products" type="radio"
+                <field name="show_products"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PRODUCTS"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
-                <field name="show_order_shipping_params_data" type="radio"
+                <field name="show_order_shipping_params_data"
+                       type="radio"
                        label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_SHIPPING_PARAMS_DATA"
-                       layout="joomla.form.field.radio.switcher" default="0">
+                       layout="joomla.form.field.radio.switcher"
+                       default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
@@ -130,7 +157,7 @@
         </fields>
     </config>
     <updateservers>
-        <server type="extension" priority="1" name="WT Jshopping SW JProjects updates">
+        <server type="extension" priority="1" name="WT JShopping Add order info to checkout finish updates">
             https://web-tolk.ru/component/swjprojects/jupdate?element=plg_wtjshoppingaddorderinfotocheckoutfinish
         </server>
     </updateservers>
