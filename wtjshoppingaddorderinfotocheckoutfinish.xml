@@ -41,8 +41,8 @@
                        fileFilter="\.php$"
                 />
 
-                <field type="select_order_info"
-                       name="PluginInfo"
+                <field type="note"
+                       name="select_order_info"
                        class="mb-4 fw-semibold"
                        description="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SELECT_ORDER_INFO_HEADER"/>
 
