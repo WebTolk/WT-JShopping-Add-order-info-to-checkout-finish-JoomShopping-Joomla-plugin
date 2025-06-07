@@ -11,6 +11,7 @@
  */
 
 use Joomla\CMS\Language\Text;
+use Joomla\Component\Jshopping\Site\Helper\Helper;
 
 defined('_JEXEC') or die;
 
@@ -33,28 +34,28 @@ if (!empty((float)$order->order_number) && $params->get('show_order_number', fal
         $order_details[Text::_('JSHOP_ORDER_NUMBER')] = $order->order_number;
 }
 if (!empty((float)$order->order_discount) && $params->get('show_order_discount', false) == true) {
-        $order_details[Text::_('JSHOP_DISCOUNT')] = $order->order_discount;
+        $order_details[Text::_('JSHOP_DISCOUNT')] = Helper::formatprice($order->order_discount);
 }
 if (!empty($order->order_tax) && $params->get('show_order_tax', false) == true) {
-        $order_details[Text::_('JSHOP_TAX')] = $order->order_tax;
+        $order_details[Text::_('JSHOP_TAX')] = Helper::formatprice($order->order_tax);
 }
 if (!empty($order->order_subtotal) && $params->get('show_order_subtotal', false) == true) {
-        $order_details[Text::_('JSHOP_SUBTOTAL')] = $order->order_subtotal;
+        $order_details[Text::_('JSHOP_SUBTOTAL')] = Helper::formatprice($order->order_subtotal);
 }
 if (!empty($order->getPaymentName()) && $params->get('show_order_payment_method', false) == true) {
         $order_details[Text::_('JSHOP_FINISH_PAYMENT_METHOD')] = $order->getPaymentName();
 }
 if (!empty((float)$order->order_payment) && $params->get('show_order_payment_price', false) == true) {
-        $order_details[Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PAYMENT_PRICE')] = $order->order_payment;
+        $order_details[Text::_('PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_SHOW_PAYMENT_PRICE')] = Helper::formatprice($order->order_payment);
 }
 if (!empty($order->getShippingName()) && $params->get('show_order_shipping_method', false) == true) {
         $order_details[Text::_('JSHOP_FINISH_SHIPPING_METHOD')] = $order->getShippingName();
 }
 if (!empty($order->order_shipping) && $params->get('show_order_shipping_price', false) == true) {
-        $order_details[Text::_('JSHOP_SHIPPING_PRICE')] = $order->order_shipping;
+        $order_details[Text::_('JSHOP_SHIPPING_PRICE')] = Helper::formatprice($order->order_shipping);
 }
 if (!empty($order->order_total) && $params->get('show_total', false) == true) {
-        $order_details[Text::_('JSHOP_PRICE_TOTAL')] = $order->order_total;
+        $order_details[Text::_('JSHOP_PRICE_TOTAL')] = Helper::formatprice($order->order_total);
 }
 
 if (!empty($order_details)) :
