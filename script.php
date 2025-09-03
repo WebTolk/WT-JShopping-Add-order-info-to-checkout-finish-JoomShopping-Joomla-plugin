@@ -1,12 +1,11 @@
 <?php
 /**
- * @package       WT JShopping Add order info to checkout finish
- * * @version     1.0.0
- * * @Author      Sergey Tolkachyov and Sergey Sergevnin, https://web-tolk.ru
- * * @copyright   Copyright (C) 2025 Sergey Tolkachyov and Sergey Sergevnin
- * * @license     GNU/GPL 3.0
- * * @link        https://web-tolk.ru
- * * @since       1.0.0
+ * @package    WT JShopping Add order info to checkout finish
+ * @version       1.1.0
+ * @Author        Sergey Tolkachyov, https://web-tolk.ru
+ * @copyright  Copyright (c) 2025 Sergey Tolkachyov, Sergey Sergevnin. All rights reserved.
+ * @license       GNU/GPL3 http://www.gnu.org/licenses/gpl-3.0.html
+ * @since         1.0.0
  */
 
 declare(strict_types=1);

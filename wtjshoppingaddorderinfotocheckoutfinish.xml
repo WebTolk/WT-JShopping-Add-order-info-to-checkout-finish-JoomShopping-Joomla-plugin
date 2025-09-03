@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <extension type="plugin" method="upgrade" group="jshoppingorder">
     <name>Jshoppingorder - WT JShopping Add order info to checkout finish</name>
-    <author>Sergey Tolkachyov and Sergey Sergevnin</author>
+    <author>Sergey Tolkachyov, Sergey Sergevnin</author>
     <authorEmail>info@web-tolk.ru</authorEmail>
-    <authorUrl>https://web-tolk.ru/</authorUrl>
-    <creationDate>May 2025</creationDate>
-    <copyright>Sergey Tolkachyov and Sergey Sergevnin</copyright>
+    <authorUrl>https://web-tolk.ru</authorUrl>
+    <creationDate>03.09.2025</creationDate>
+    <copyright>Copyright (c) 2025 Sergey Tolkachyov, Sergey Sergevnin. All rights reserved.</copyright>
     <license>GNU GPL 3.0</license>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <description>PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_DESC</description>
     <scriptfile>script.php</scriptfile>
     <namespace path="src">Joomla\Plugin\Jshoppingorder\Wtjshoppingaddorderinfotocheckoutfinish</namespace>
@@ -152,6 +152,25 @@
                        default="0">
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
+                </field>
+                <field type="radio"
+                       class="btn-group"
+                       name="checkout_finish_position"
+                       label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_CHECKOUT_FINISH_POSITION"
+                       description="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_CHECKOUT_FINISH_POSITION_DESC"
+                       default="text">
+                    <option value="text">text</option>
+                    <option value="text_end">text_end</option>
+                </field>
+                <field type="radio"
+                       class="btn-group"
+                       name="mode"
+                       label="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_MODE"
+                       description="PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_MODE_DESC"
+                       default="before">
+                    <option value="before">PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_MODE_BEFORE</option>
+                    <option value="replace">PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_MODE_REPLACE</option>
+                    <option value="after">PLG_WTJSHOPPINGADDORDERINFOTOCHECKOUTFINISH_MODE_AFTER</option>
                 </field>
             </fieldset>
         </fields>

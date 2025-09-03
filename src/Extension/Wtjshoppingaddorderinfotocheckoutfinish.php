@@ -1,12 +1,11 @@
 <?php
 /**
- * @package     WT JShopping Add order info to checkout finish
- * @version     1.0.0
- * @Author      Sergey Tolkachyov and Sergey Sergevnin, https://web-tolk.ru
- * @copyright   Copyright (C) 2025 Sergey Tolkachyov and Sergey Sergevnin
- * @license     GNU/GPL 3.0
- * @link        https://web-tolk.ru
- * @since       1.0.0
+ * @package    WT JShopping Add order info to checkout finish
+ * @version       1.1.0
+ * @Author        Sergey Tolkachyov, https://web-tolk.ru
+ * @copyright  Copyright (c) 2025 Sergey Tolkachyov, Sergey Sergevnin. All rights reserved.
+ * @license       GNU/GPL3 http://www.gnu.org/licenses/gpl-3.0.html
+ * @since         1.0.0
  */
 
 namespace Joomla\Plugin\Jshoppingorder\Wtjshoppingaddorderinfotocheckoutfinish\Extension;
@@ -25,97 +24,112 @@ defined('_JEXEC') or die;
 
 class Wtjshoppingaddorderinfotocheckoutfinish extends CMSPlugin implements SubscriberInterface
 {
-	protected $autoloadLanguage = true;
+    protected $autoloadLanguage = true;
 
-	/**
-	 * Returns an array of events this subscriber will listen to.
-	 *
-	 * @return  array
-	 *
-	 * @since   1.0.0
-	 */
-	public static function getSubscribedEvents(): array
-	{
-		return [
-			'onBeforeDisplayCheckoutFinish' => 'onBeforeDisplayCheckoutFinish',
-		];
-	}
+    /**
+     * Returns an array of events this subscriber will listen to.
+     *
+     * @return  array
+     *
+     * @since   1.0.0
+     */
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'onBeforeDisplayCheckoutFinish' => 'onBeforeDisplayCheckoutFinish',
+        ];
+    }
 
-	/**
-	 * Trigger fired on \Joomla\Component\Jshopping\Site\Controller\CheckoutController::finish
-	 *
-	 * @param   Event  $event
-	 *
-	 * @return void
-	 * @see   \Joomla\Component\Jshopping\Site\Controller\CheckoutController::finish
-	 * @since 1.0.0
-	 */
+    /**
+     * Trigger fired on \Joomla\Component\Jshopping\Site\Controller\CheckoutController::finish
+     *
+     * @param   Event  $event
+     *
+     * @return void
+     * @see   \Joomla\Component\Jshopping\Site\Controller\CheckoutController::finish
+     * @since 1.0.0
+     */
 
-	public function onBeforeDisplayCheckoutFinish(Event $event): void
-	{
-		/**
-		 * @var string $text     статический текст для страницы Завершения заказа из настроек JoomShopping
-		 * @var int    $order_id id заказа
-		 * @var string $text_end Текст в самом конце
-		 */
-		[$text, $order_id, $text_end] = $event->getArguments();
+    public function onBeforeDisplayCheckoutFinish(Event $event): void
+    {
+        /**
+         * @var string $eventArguments[0] - $text     статический текст для страницы Завершения заказа из настроек JoomShopping
+         * @var int    $eventArguments[1] - $order_id id заказа
+         * @var string $eventArguments[2] - $text_end Текст в самом конце. JoomShopping 5.3.1+
+         */
+        //
+        $eventArguments = $event->getArguments();
+        $order_id = $eventArguments[1];
+        $order = JSFactory::getTable('order');
+        $order->load($order_id);
+        $order->getAllItems();
+        $user_info = JSFactory::getUser();
+        $sh_method = JSFactory::getTable('shippingMethod');
+        $sh_method->load($order->shipping_method_id);
 
-		$order = JSFactory::getTable('order');
-		$order->load($order_id);
-		$order->getAllItems();
+        if ($shippingForm = $sh_method->getShippingForm())
+        {
+            $sh_params = $order->getShippingParamsData();
+            $shippingForm->setParams($sh_params);
+            $shipping_params_names = $shippingForm->getDisplayNameParams();
+            $order->shipping_params = Helper::getTextNameArrayValue( $shipping_params_names, $sh_params);
+            $order->wtjshoppingaddorderinfotocheckoutfinish_shipping_params_names = $shipping_params_names;
+        }
 
-		$user_info = JSFactory::getUser();
+        $checkout_finish_position = $this->params->get('checkout_finish_position','text');
+        $mode = $this->params->get('mode','before');
 
-		$sh_method = JSFactory::getTable('shippingMethod');
-		$sh_method->load($order->shipping_method_id);
-		$shippingForm = $sh_method->getShippingForm();
+        $html = $this->getHtml($order, $user_info);
 
-		if ($shippingForm)
-		{
-			$sh_params = $order->getShippingParamsData();
-			$shippingForm->setParams($sh_params);
-			$shipping_params_names = $shippingForm->getDisplayNameParams();
-			$order->shipping_params = Helper::getTextNameArrayValue( $shipping_params_names, $sh_params);
-			$order->wtjshoppingaddorderinfotocheckoutfinish_shipping_params_names = $shipping_params_names;
-		}
+        /** @var int $event_argument_position 0 - Для аргумента `$text` */
+        $event_argument_position = $checkout_finish_position == 'text' ? 0 : 2;
 
-		$text = $this->getHtml($order, $user_info);
+        switch ($mode) {
+            case 'replace':
+                $eventArguments[$event_argument_position] = $html;
+                break;
+            case 'after':
+                $eventArguments[$event_argument_position] .= $html;
+                break;
+            case 'before':
+            default:
+                $eventArguments[$event_argument_position] = $html.$eventArguments[$event_argument_position];
+                break;
+        }
+    }
 
-		$event->setArgument(0, $text);
-	}
+    /**
+     * Render HTML layout for order info
+     *
+     * @param $order
+     * @param $user_info
+     *
+     * @return string
+     *
+     * @since 1.0.0
+     */
+    protected function getHtml($order, $user_info): string
+    {
+        $layoutPath = JPATH_PLUGINS . '/' . $this->_type . '/' . $this->_name . '/tmpl';
 
-	/**
-	 * Render HTML layout for order info
-	 *
-	 * @param $order
-	 * @param $user_info
-	 *
-	 * @return string
-	 *
-	 * @since 1.0.0
-	 */
-	protected function getHtml($order, $user_info): string
-	{
-		$layoutPath = JPATH_PLUGINS . '/' . $this->_type . '/' . $this->_name . '/tmpl';
+        $tmpl = $this->params->get('tmpl', 'default');
 
-		$tmpl = $this->params->get('tmpl', 'default');
+        if (!is_file($layoutPath . '/' . $tmpl . '.php'))
+        {
+            $tmpl = 'default';
+        }
 
-		if (!is_file($layoutPath . '/' . $tmpl . '.php'))
-		{
-			$tmpl = 'default';
-		}
+        $html = LayoutHelper::render(
+            $tmpl,
+            [
+                'order'     => $order,
+                'user_info' => $user_info,
+                'params'    => $this->params,
 
-		$html = LayoutHelper::render(
-			$tmpl,
-			[
-				'order'     => $order,
-				'user_info' => $user_info,
-				'params'    => $this->params,
+            ],
+            $layoutPath
+        );
 
-			],
-			$layoutPath
-		);
-
-		return $html;
-	}
+        return $html;
+    }
 }

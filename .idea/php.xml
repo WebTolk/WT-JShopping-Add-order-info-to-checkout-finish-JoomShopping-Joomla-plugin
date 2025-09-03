@@ -15,7 +15,12 @@
       <phpcs_by_interpreter asDefaultInterpreter="true" interpreter_id="2f15514a-cf05-44c1-aea4-ac3b31603a13" timeout="30000" />
     </phpcs_settings>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/../../OSPanel/domains/j5.local" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.1">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpStan">
